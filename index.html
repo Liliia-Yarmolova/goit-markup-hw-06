@@ -404,42 +404,56 @@
             </li>
           </ul>
         </div>
-        <div class="sing-up">
+
+        
+        <form class="sing-up-form js-sing-up-form">
           <b class="sing-up-title">подпишитесь на рассылку</b>
-          <form class="sing-up-form js-sing-up-form">
-          <input type="email" name="mail" id="mail" placeholder="E-mail">
-          <button type="submit" class="modal-btn">Подписаться
-           <svg class="icon-send" width="24" height="24">
-             <use href="./images/sprite1.svg#icon-send"></use>
-           </svg>
-          </button>  
-          </form>        
-      </div>
+            <div class="sing-up-element">
+              <input type="email" name="mail" id="sing-up-mail" placeholder="E-mail" required>
+              <button type="submit" class="modal-btn">Подписаться
+                <svg class="icon-send" width="24" height="24">
+                  <use href="./images/sprite1.svg#icon-send"></use>
+                </svg>
+              </button>  
+            </div>
+        </form>        
     </footer>
 
     <div class="backdrop is-hidden" data-modal>
       <div class="modal">
         <form class="form">
-          <b>Оставьте свои данные, мы вам перезвоним</b>
-          <div class="foml-field">
+          <b class="form-title">Оставьте свои данные, мы вам перезвоним</b>
+          <div class="form-field">
             <label for="name">Имя</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" class="form-input" required minlength="2">
           </div>
-          <div class="foml-field">
+          <div class="form-field">
             <label for="tel">Телефон</label>
-            <input type="tel" name="tel" id="tel">
+            <input type="tel" name="tel" id="tel" class="form-input" required>
           </div>
-          <div class="foml-field">
+          <div class="form-field">
             <label for="mail">Почта</label>
-            <input type="email" name="mail" id="mail">
+            <input type="email" name="mail" id="mail" class="form-input" required>
           </div>
-          <div class="foml-field">
-            <label for="coments">Коментарии</label>
-            <textarea name="coments" id="coments" rows="10"></textarea>
+          <div class="form-field comments">
+            <label for="comments">Коментарии</label>
+            <textarea name="comments" id="coments" class="form-input-comments"></textarea>
           </div>
+
+          
+          <div class="form-field accept">
+            <input id="accept" name="agreement" type="checkbox" value="Y" required>
+            <label for="accept">Соглашаюсь с рассылкой и принимаю Условия договора</label>
+          </div>
+
+          
           <button type="submit" class="modal-btn">Отправить</button>
+          <button class="close-modal-btn" data-modal-close>
+            <svg class="icon-vector" width="11" height="11">
+                  <use href="./images/sprite1.svg#icon-vector"></use>
+            </svg>
+          </button>
         </form>
-        <button data-modal-close>Close</button>
       </div>
     </div>
 
