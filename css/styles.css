@@ -237,6 +237,7 @@ img {
 
   border-radius: 4px;
   border-style: unset;
+  cursor: pointer;
 }
 
 /*OUR VALUES*/
@@ -484,7 +485,7 @@ img {
 
 .footer-map-link,
 .join,
-.sing-up-title {
+.sing-up-form-title {
   color: var(--title-grey-theme-color);
 }
 
@@ -508,7 +509,7 @@ img {
 }
 
 .join,
-.sing-up-title {
+.sing-up-form-title {
   display: block;
   font-weight: 700;
   line-height: 1.143;
@@ -527,15 +528,15 @@ img {
 .footer-social-links .social-links-list-item:focus {
   background-color: var(--accent-color);
 }
-.sing-up-form {
+.sing-up {
   padding-top: 12px;
 }
 
-.sing-up-element {
+.sing-up-form-element {
   display: flex;
 }
 
-.sing-up-element .modal-btn {
+.sing-up-form-element .modal-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -548,17 +549,21 @@ img {
   fill: var(--modal-btn-blue-theme-color);
 }
 
-.sing-up-element input {
+.sing-up-form-element input {
   width: 358px;
   margin-right: 12px;
   padding-left: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
-  background: #2f303a;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.sing-up-element input::placeholder {
+.sing-up-form-element input::placeholder {
+  font-family: var(--main-font);
   font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -736,22 +741,47 @@ img {
   margin-bottom: 30px;
 }
 
-.form-field {
+.form-field-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 28px;
 }
 
+.form-icon {
+  position: absolute;
+  top: 11px;
+  left: 16px;
+}
+
+.form-input-label {
+  position: absolute;
+  top: 12px;
+  left: 42px;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.143;
+  letter-spacing: 0.01em;
+  color: var(--text-color);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .close-modal-btn {
   position: absolute;
+  top: 8px;
+  right: 8px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  /* transform-origin: center; */
-  top: 8px;
-  right: 8px;
+  cursor: pointer;
+}
+
+.close-modal-btn:focus .icon-vector,
+.close-modal-btn:hover .icon-vector {
+  fill: var(--accent-color);
 }
 
 .form-input,
@@ -760,30 +790,84 @@ img {
   border: 1px solid rgba(33, 33, 33, 0.2);
   padding-top: 12px;
   padding-bottom: 12px;
+  padding-left: 42px;
   border-radius: 3px;
   letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.form-input:focus + .form-input-label,
+.form-input:not(:placeholder-shown) + .form-input-label {
+  transform: translate(-27px, -30px);
+  color: var(--accent-color);
+}
+
+.form-input:focus ~ .form-icon {
+  fill: var(--accent-color);
 }
 
 .form-input {
   height: 40px;
-  /* margin-bottom: 28px; */
-}
-
-.comments {
-  margin-bottom: 20px;
 }
 
 .form-input-comments {
   height: 120px;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: 20px;
   resize: none;
 }
 
-.form-field input[type='checkbox'] {
+.accept-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.form-option-span {
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.714;
+  letter-spacing: 0.03em;
+  color: var(--text-color);
+}
+
+.form-option-span a {
+  color: #3498db;
+}
+
+.form-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.form-custom-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 15px;
+  border: 2px solid #000;
+  border-radius: 2px;
   margin-right: 8px;
 }
 
-.accept {
-  margin-bottom: 30px;
+.form-checkbox:not(:checked) + .form-custom-checkbox .check-icon {
+  opacity: 0;
+}
+
+.form-checkbox:checked + .form-custom-checkbox {
+  background-color: var(--accent-color);
+  opacity: 1;
+  fill: var(--primary-white-color);
+  stroke: var(--primary-white-color);
+  stroke-width: 4px;
+  border: none;
 }
